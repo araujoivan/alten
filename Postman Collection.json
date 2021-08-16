@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "0cf42db6-16ad-44b3-8bda-b1790d2bafde",
+		"name": "Alten test",
+		"description": "Postman tests for alten application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Booking a reservation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clienId\" : 1,\r\n    \"roomNumber\": 463,\r\n    \"period\" : {\r\n        \"checkIn\" : \"2021-08-20T12:59:11\",\r\n        \"checkOut\": \"2021-08-21T17:59:11\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/booking",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"booking"
+					]
+				},
+				"description": "JSON SAMPLE\r\n\r\n{\r\n    \"clienId\" : 1,\r\n    \"roomNumber\": 463,\r\n    \"period\" : {\r\n        \"checkIn\" : \"2021-08-20T12:59:11\",\r\n        \"checkOut\": \"2021-08-21T17:59:11\"\r\n    }\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Getting unavailable periods for all rooms",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"checkIn\": \"2021-08-01T00:00:00\",\r\n    \"checkOut\": \"2021-08-30T23:59:58\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8083/room/period",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"room",
+						"period"
+					]
+				},
+				"description": "JSON SAMPLE\r\n\r\n{\r\n    \"checkIn\": \"2021-08-01T00:00:00\",\r\n    \"checkOut\": \"2021-08-30T23:59:58\"\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Canceling a reservation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/booking/907a094e",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"booking",
+						"907a094e"
+					]
+				},
+				"description": "URL SAMPLE\r\n\r\nCanceling a reservation with code 907a094e\r\n\r\nlocalhost:8082/booking/907a094e"
+			},
+			"response": []
+		},
+		{
+			"name": "Changing the reservation dates",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clienId\" : 1,\r\n    \"code\": \"907a094e\",\r\n    \"period\" : {\r\n        \"checkIn\" : \"2021-08-19T12:59:11.332\",\r\n        \"checkOut\": \"2021-08-19T12:59:11.332\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8082/booking",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"booking"
+					]
+				},
+				"description": "JSON SAMPLE\r\nChanging a reservation code 907a094e\r\n\r\n{\r\n    \"clienId\" : 1,\r\n    \"code\": \"907a094e\",\r\n    \"period\" : {\r\n        \"checkIn\" : \"2021-08-19T12:59:11.332\",\r\n        \"checkOut\": \"2021-08-19T12:59:11.332\"\r\n    }\r\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "Getting information about a reservation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8082/booking/907a094e",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"booking",
+						"907a094e"
+					]
+				},
+				"description": "URL SAMPLE\r\n\r\nGetting info from reservation code 907a094e\r\n\r\nlocalhost:8082/booking/907a094e"
+			},
+			"response": []
+		},
+		{
+			"name": "Getting all rooms",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8083/room/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"room",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

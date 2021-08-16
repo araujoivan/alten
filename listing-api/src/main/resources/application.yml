@@ -1,0 +1,14 @@
+spring:
+    application:
+        name: listing-api
+        
+    datasource:
+        url: jdbc:h2:file:../db/cancun;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE
+        username: sa
+        password:
+    
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+
+server:
+    port: 8083
